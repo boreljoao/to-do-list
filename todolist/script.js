@@ -51,28 +51,6 @@ function adicionarnota(event) {
     }
 }
 
-function carregarNotas() {
-    let notas = JSON.parse(localStorage.getItem('notas')) || [];
-    notas.forEach(nota => adicionarNotaNaLista(nota));
-}
-
-// Atualizar localStorage
-function atualizarLocalStorage() {
-    let notas = [];
-    document.querySelectorAll('#notas li').forEach(li => {
-        let texto = li.querySelector('p').textContent;
-        let concluida = li.querySelector('p').style.textDecoration === "line-through";
-        notas.push({ texto, concluida });
-    });
-    localStorage.setItem('notas', JSON.stringify(notas));
-}
-
-// Remover nota do localStorage
-function removerNotaDoLocalStorage(texto) {
-    let notas = JSON.parse(localStorage.getItem('notas')) || [];
-    notas = notas.filter(nota => nota.texto !== texto);
-    localStorage.setItem('notas', JSON.stringify(notas));
-}
 
 document.querySelector('#add').addEventListener('click', adicionarnota)
 
